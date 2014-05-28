@@ -1,0 +1,32 @@
+=meta: 0.0.1
+
+name: Tiny-YAML
+version: 0.0.1
+abstract: YAML::Tiny Done Right
+homepage: http://yaml.org
+
+license: perl
+copyright: 2014. Ingy döt Net.
+author:
+  name: Ingy döt Net
+  email: ingy@cpan.org
+  github: ingydotnet
+  twitter: ingydotnet
+  freenode: ingy
+  homepage: http://ingy.net
+
+requires:
+  perl: 5.8.1
+test:
+  requires:
+    YAML::XS: 0
+
+devel:
+  git: git@github.org/ingydotnet/tiny-yaml-pm
+  irc: irc.freenode.net/tiny-yaml
+  bug: https://github.com/ingydotnet/tiny-yaml-pm/issues/
+
+=cpan:
+  include_testml: 1
+
+=travis: perl

@@ -1,7 +1,7 @@
 language: perl
 script: prove -lv test
 install:
-- cpanm -n -q Test::More YAML::XS TestML
+- cpanm -n -q Test::More YAML::XS Pegex TestML
 perl:
 - "5.19"
 - "5.18"
@@ -10,9 +10,9 @@ perl:
 - "5.12"
 - "5.10"
 - "5.8"
-# notifications:
-#   irc:
-#     channels:
-#     - "irc.perl.org#yaml"
-#     on_success: change
-#     on_failure: always
+notifications:
+  irc:
+    channels:
+    - "irc.perl.org#yaml"
+    on_success: change
+    on_failure: always

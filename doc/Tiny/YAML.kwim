@@ -86,9 +86,9 @@ I said /human-readable/ and not /geek-readable/. The sort of files that
 your average manager or secretary should be able to look at and make
 sense of.
 
-"Tiny::YAML"[https://metacpan.org/pod/Tiny::YAML] does not generate comments,
-it won't necessarily preserve the order of your hashes, and it will normalise
-if reading in and writing out again.
+[Tiny::YAML] does not generate comments, it won't necessarily preserve the
+order of your hashes, and it will normalise if reading in and writing out
+again.
 
 It only supports a very basic subset of the full YAML specification.
 
@@ -100,20 +100,18 @@ in a few lines of code. Please don't be offended if your request is
 refused. Someone has to draw the line, and for Tiny::YAML that someone
 is me.
 
-If you need something with more power move up to
-"YAML"[https://metacpan.org/pod/YAML] (7 megabytes of memory overhead) or
-"YAML::XS"[https://metacpan.org/pod/YAML::XS] (6 megabytes memory overhead and
-requires a C compiler).
+If you need something with more power move up to [YAML] (7 megabytes of memory
+overhead) or [YAML::XS] (6 megabytes memory overhead and requires a C
+compiler).
 
-To restate, "Tiny::YAML"[https://metacpan.org/pod/Tiny::YAML] does /not/
-preserve your comments, whitespace, or the order of your YAML data. But it
-should round-trip from Perl structure to file and back again just fine.
+To restate, [Tiny::YAML] does /not/ preserve your comments, whitespace, or the
+order of your YAML data. But it should round-trip from Perl structure to file
+and back again just fine.
 
 = Functions
 
 Tiny::YAML implements a number of functions to add compatibility with the
-"YAML"[https://metacpan.org/pod/YAML] API. These should be a drop-in
-replacement.
+[YAML] API. These should be a drop-in replacement.
 
 - `Dump`
 
@@ -138,9 +136,8 @@ replacement.
 
   Turn YAML into Perl data. This is the opposite of Dump.
 
-  Just like "Storable"[https://metacpan.org/pod/Storable]'s thaw() function or
-  the eval() function in relation to
-  [Data::Dumper"[https://metacpan.org/pod/Data::Dumper].
+  Just like [Storable]'s thaw() function or the eval() function in relation to
+  [Data::Dumper].
 
   It parses a character string containing a valid YAML stream into a list of
   Perl data structures representing the individual YAML documents.  Be sure to
@@ -474,11 +471,11 @@ Ingy döt Net <ingy@cpan.org>
 
 = See Also
 
-- "YAML::Tiny"[https://metacpan.org/pod/YAML::Tiny]
-- "YAML"[https://metacpan.org/pod/YAML]
-- "YAML::Syck"[https://metacpan.org/pod/YAML::Syck]
-- "Config::Tiny"[https://metacpan.org/pod/Config::Tiny]
-- "CSS::Tiny"[https://metacpan.org/pod/CSS::Tiny]
+- [YAML::Tiny]
+- [YAML]
+- [YAML::Syck]
+- [Config::Tiny]
+- [CSS::Tiny]
 
 = Copyright
 

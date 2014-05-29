@@ -4,6 +4,7 @@ use 5.008001; # sane UTF-8 support
 use strict;
 use warnings;
 package Tiny::YAML;
+# VERSION
 
 # XXX-INGY is 5.8.1 too old/broken for utf8?
 # XXX-XDG Lancaster consensus was that it was sufficient until
@@ -500,12 +501,14 @@ END_PERL
     }
 }
 
-# For Tiny::YAML we want one simple file. These `INCLUDE`s get inlined before
+# For Tiny::YAML we want one simple file. These `INLINE`s get inlined before
 # going to CPAN. We want to optimize this section over time. It gives us
 # something *very* specific to optimize.
-use Pegex::Parser;              #INCLUDE
-use Pegex::Optimizer;           #INCLUDE
-use Tiny::YAML::Grammar;        #INCLUDE
-use Tiny::YAML::Constructor;    #INCLUDE
+use Pegex::Optimizer;           #INLINE
+use Pegex::Grammar;             #INLINE
+use Pegex::Tree;                #INLINE
+use Pegex::Parser;              #INLINE
+use Tiny::YAML::Grammar;        #INLINE
+use Tiny::YAML::Constructor;    #INLINE
 
 1;

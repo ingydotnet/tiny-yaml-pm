@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Tiny-YAML
-version: 0.0.2
+version: 0.0.3
 abstract: YAML::Tiny Done Right
 homepage: http://yaml.org
 
@@ -29,6 +29,7 @@ devel:
   bug: https://github.com/ingydotnet/tiny-yaml-pm/issues/
 
 =cpan:
-  include_testml: 1
+  # include_testml: 1
+  ourpkgversion: 1
 
 =travis: perl

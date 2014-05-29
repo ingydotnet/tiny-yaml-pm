@@ -1,0 +1,23 @@
+#!/usr/bin/env perl
+
+use strict;
+use lib 'lib';
+use IO::All;
+use File::Path;
+
+my $text = io->file('lib/Tiny/YAML.pm')->all;
+my @includes = ($text =~ /^use\s+(\S+);\s+#INLINE$/gm);
+
+for my $include (@includes) {
+    eval "require $include; 1" or die;
+    (my $key = "$include.pm") =~ s!::!/!g;
+    my $inline = io($INC{$key})->all;
+    $inline = "BEGIN{\$INC{'$key'} = 'INLINE/$key'}\n$inline";
+    $text =~ s/(use\s+$include;\s+#INLINE\n)/#$1$inline/;
+}
+
+io->file('cpan/lib/Tiny/YAML.pm')->print($text);
+
+File::Path::remove_tree('cpan/lib/Tiny/YAML');
+File::Path::remove_tree('cpan/t/t');
+File::Path::remove_tree('cpan/t/xt');

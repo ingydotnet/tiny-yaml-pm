@@ -1,6 +1,0 @@
-/.ackrc
-/.build/
-!/.gitignore
-/.latest
-/YAML-Tiny-*/
-/YAML-Tiny-*.tar.gz

@@ -1,4 +1,10 @@
 ---
+version: 0.0.5
+date:    Sun Jun  8 18:02:11 PDT 2014
+changes:
+- Update travis
+- Update badges
+---
 version: 0.0.4
 date:    Thu May 29 11:38:33 EDT 2014
 changes:

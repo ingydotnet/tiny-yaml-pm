@@ -3,10 +3,14 @@ Tiny::YAML
 
 YAML::Tiny Done Right
 
+<badge-travis ingydotnet/tiny-yaml-pm>
+
+<badge-coveralls ingydotnet/tiny-yaml-pm>
+
 = Preamble
 
-Don't even look at this yet. It's just 0.0.1 and will be bootstrapping for a
-while.
+Don't even look at this yet. It's a super early release and will be
+bootstrapping for a while.
 
 This module uses a real grammar to parse/load YAML.
 

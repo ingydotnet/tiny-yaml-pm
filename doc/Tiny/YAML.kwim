@@ -3,9 +3,7 @@ Tiny::YAML
 
 YAML::Tiny Done Right
 
-<badge-travis ingydotnet/tiny-yaml-pm>
-
-<badge-coveralls ingydotnet/tiny-yaml-pm>
+<badge travis coveralls ingydotnet/tiny-yaml-pm>
 
 = Preamble
 

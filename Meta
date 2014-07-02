@@ -25,7 +25,7 @@ test:
 
 devel:
   git: git@github.org/ingydotnet/tiny-yaml-pm
-  irc: irc.freenode.net/tiny-yaml
+  irc: irc.perl.org#yaml
   bug: https://github.com/ingydotnet/tiny-yaml-pm/issues/
 
 =travis:

@@ -1,4 +1,10 @@
 ---
+version: 0.0.8
+date:    Wed Jul  2 20:05:43 PDT 2014
+changes:
+- Add footer support.
+- Fix inlining to split package line for no-indexing (issue#4)
+---
 version: 0.0.7
 date:    Wed Jul  2 20:05:43 PDT 2014
 changes:

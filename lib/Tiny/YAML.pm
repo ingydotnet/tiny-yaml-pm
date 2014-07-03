@@ -1,6 +1,6 @@
 use strict; use warnings;
 package Tiny::YAML;
-our $VERSION = '0.0.7';
+our $VERSION = '0.0.8';
 
 #####################################################################
 # The Tiny::YAML API.
@@ -422,14 +422,16 @@ END_PERL
 # For Tiny::YAML we want one simple file. These `INLINE`s get inlined before
 # going to CPAN. We want to optimize this section over time. It gives us
 # something *very* specific to optimize.
-no strict;
+
+no strict;  # Needed for Pegex::Base to compile.
 use Pegex::Base();              #INLINE
+use strict;
 use Pegex::Optimizer;           #INLINE
 use Pegex::Grammar;             #INLINE
 use Pegex::Tree;                #INLINE
 use Pegex::Input;               #INLINE
 use Pegex::Parser;              #INLINE
-use YAML::Pegex::Grammar 0.0.7; #INLINE
+use YAML::Pegex::Grammar 0.0.8; #INLINE
 use Tiny::YAML::Constructor;    #INLINE
 
 1;

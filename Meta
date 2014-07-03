@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Tiny-YAML
-version: 0.0.6
+version: 0.0.7
 abstract: YAML::Tiny Done Right
 homepage: http://yaml.org
 
@@ -17,11 +17,6 @@ author:
 
 requires:
   perl: 5.8.1
-  # XXX - Only for first couple releases. Inlined soon.
-  Pegex: 0
-test:
-  requires:
-    YAML::XS: 0
 
 devel:
   git: git@github.org/ingydotnet/tiny-yaml-pm

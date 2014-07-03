@@ -1,8 +1,7 @@
-use strict;
+use strict; use warnings;
 package Tiny::YAML::Constructor;
-
-use base 'Pegex::Tree';
-# use XXX -with => 'YAML::XS';
+use Pegex::Base;
+extends 'Pegex::Tree';
 
 sub init {
     my ($self) = @_;
@@ -17,9 +16,11 @@ sub final {
 
 sub got_block_mapping {
     my ($self, $got) = @_;
-    my $key = $got->[0][0][0];
-    my $value = $got->[0][0][1];
-    return {$key, $value};
+    return +{
+        map {
+            @$_
+        } @{$got->[0]}
+    };
 }
 
 sub got_yaml_document {

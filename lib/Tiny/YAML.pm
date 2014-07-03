@@ -1,12 +1,6 @@
-use 5.008001; # sane UTF-8 support
-use strict;
-use warnings;
+use strict; use warnings;
 package Tiny::YAML;
-
-# XXX-INGY is 5.8.1 too old/broken for utf8?
-# XXX-XDG Lancaster consensus was that it was sufficient until
-# proven otherwise
-
+our $VERSION = '0.0.7';
 
 #####################################################################
 # The Tiny::YAML API.
@@ -21,9 +15,6 @@ our @EXPORT_OK = qw{ LoadFile DumpFile };
 ###
 # Functional/Export API:
 
-# XXX-INGY Returning last document seems a bad behavior.
-# XXX-XDG I think first would seem more natural, but I don't know
-# that it's worth changing now
 sub Load {
     my @data = Tiny::YAML->New->load(@_);
     wantarray ? @data : $data[0];
@@ -145,32 +136,31 @@ sub load_file {
 sub load {
     my $self = shift;
     my $string = $_[0];
-#     eval {
-        unless ( defined $string ) {
-            die \"Did not provide a string to load";
-        }
+    unless ( defined $string ) {
+        die \"Did not provide a string to load";
+    }
 
-        # Check if Perl has it marked as characters, but it's internally
-        # inconsistent.  E.g. maybe latin1 got read on a :utf8 layer
-        if ( utf8::is_utf8($string) && ! utf8::valid($string) ) {
-            die \<<'...';
+    # Check if Perl has it marked as characters, but it's internally
+    # inconsistent.  E.g. maybe latin1 got read on a :utf8 layer
+    if ( utf8::is_utf8($string) && ! utf8::valid($string) ) {
+        die \<<'...';
 Read an invalid UTF-8 string (maybe mixed UTF-8 and 8-bit character set).
 Did you decode with lax ":utf8" instead of strict ":encoding(UTF-8)"?
 ...
-        }
+    }
 
-        # Ensure Unicode character semantics, even for 0x80-0xff
-        utf8::upgrade($string);
+    # Ensure Unicode character semantics, even for 0x80-0xff
+    utf8::upgrade($string);
 
-        # Check for and strip any leading UTF-8 BOM
-        $string =~ s/^\x{FEFF}//;
+    # Check for and strip any leading UTF-8 BOM
+    $string =~ s/^\x{FEFF}//;
 
-        return + Pegex::Parser->new(
-            grammar => 'Tiny::YAML::Grammar'->new,
-            receiver => 'Tiny::YAML::Constructor'->new,
-            # debug => 1,
-        )->parse($string);
-#     };
+    return + Pegex::Parser->new(
+        grammar => 'YAML::Pegex::Grammar'->new,
+        receiver => 'Tiny::YAML::Constructor'->new,
+        # debug => 1,
+    )->parse($string);
+
     if ( ref $@ eq 'SCALAR' ) {
         $self->_error(${$@});
     } elsif ( $@ ) {
@@ -401,15 +391,10 @@ sub _error {
 #####################################################################
 # Helper functions. Possibly not needed.
 
-
 # Use to detect nv or iv
 use B;
 
-# XXX-INGY Is this core in 5.8.1? Can we remove this?
-# XXX-XDG Scalar::Util 1.18 didn't land until 5.8.8, so we need this
-#####################################################################
 # Use Scalar::Util if possible, otherwise emulate it
-
 BEGIN {
     local $@;
     if ( eval { require Scalar::Util; Scalar::Util->VERSION(1.18); } ) {
@@ -437,11 +422,14 @@ END_PERL
 # For Tiny::YAML we want one simple file. These `INLINE`s get inlined before
 # going to CPAN. We want to optimize this section over time. It gives us
 # something *very* specific to optimize.
+no strict;
+use Pegex::Base();              #INLINE
 use Pegex::Optimizer;           #INLINE
 use Pegex::Grammar;             #INLINE
 use Pegex::Tree;                #INLINE
+use Pegex::Input;               #INLINE
 use Pegex::Parser;              #INLINE
-use Tiny::YAML::Grammar;        #INLINE
+use YAML::Pegex::Grammar;       #INLINE
 use Tiny::YAML::Constructor;    #INLINE
 
 1;

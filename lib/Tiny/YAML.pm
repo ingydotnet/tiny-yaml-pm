@@ -429,7 +429,7 @@ use Pegex::Grammar;             #INLINE
 use Pegex::Tree;                #INLINE
 use Pegex::Input;               #INLINE
 use Pegex::Parser;              #INLINE
-use YAML::Pegex::Grammar;       #INLINE
+use YAML::Pegex::Grammar 0.0.7; #INLINE
 use Tiny::YAML::Constructor;    #INLINE
 
 1;

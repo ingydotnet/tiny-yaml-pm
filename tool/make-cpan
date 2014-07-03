@@ -6,7 +6,7 @@ use IO::All;
 use File::Path;
 
 my $text = io->file('lib/Tiny/YAML.pm')->all;
-my @includes = ($text =~ /^(?:.* )?use\s+([\w\:]+)(?:\(\))?;\s+#INLINE$/gm);
+my @includes = ($text =~ /^(?:.* )?use\s+([\w\:]+).*;\s+#INLINE$/gm);
 
 for my $include (@includes) {
     eval "require $include; 1" or die;
@@ -14,6 +14,7 @@ for my $include (@includes) {
     my $inline = io($INC{$key})->all;
     $inline =~ s/\n+1;\n+/\n/;
     $inline =~ s/\n+\z//;
+    $inline =~ s/^( *package) +(\w.*)/$1\n$2/gm;
     $inline = <<"...";
 BEGIN { \$INC{'$key'} = 'INLINE/$key' }
 BEGIN {
@@ -21,7 +22,7 @@ BEGIN {
 $inline
 }
 ...
-    $text =~ s/((?:.* )?use\s+$include(?:\(\))?;\s+#INLINE\n)/#$1$inline/;
+    $text =~ s/((?:.* )?use\s+$include.*;\s+#INLINE\n)/#$1$inline/;
 }
 
 io->file('cpan/lib/Tiny/YAML.pm')->print($text);

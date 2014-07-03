@@ -18,6 +18,8 @@ perl:
 install:
 - cpanm --quiet --notest
   Devel::Cover::Report::Coveralls
+  Pegex
+  YAML::Pegex
 
 script:
 - PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine

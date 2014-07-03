@@ -26,3 +26,6 @@ devel:
 =travis:
   type: perl
   irc: irc.perl.org#yaml
+  requires:
+    Pegex: 0
+    YAML::Pegex: 0

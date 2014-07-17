@@ -1,7 +1,7 @@
 =meta: 0.0.1
 
 name: Tiny-YAML
-version: 0.0.8
+version: 0.0.9
 abstract: YAML::Tiny Done Right
 homepage: http://yaml.org
 
@@ -19,9 +19,9 @@ requires:
   perl: 5.8.1
 
 devel:
-  git: git@github.org/ingydotnet/tiny-yaml-pm
+  git: https://github.com/ingydotnet/tiny-yaml-pm
+  bug: https://github.com/ingydotnet/tiny-yaml-pm/issues
   irc: irc.perl.org#yaml
-  bug: https://github.com/ingydotnet/tiny-yaml-pm/issues/
 
 =travis:
   type: perl

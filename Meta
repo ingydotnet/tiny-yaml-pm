@@ -1,7 +1,7 @@
 =meta: 0.0.2
 
 name: Tiny-YAML
-version: 0.0.13
+version: 0.0.14
 abstract: YAML::Tiny Done Right
 homepage: http://yaml.org
 language: perl
@@ -23,8 +23,4 @@ devel:
 
 requires:
   perl: 5.8.1
-
-=travis:
-  requires:
-    Pegex: 0
-    YAML::Pegex: 0
+  YAML::Pegex: 0

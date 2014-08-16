@@ -1,31 +1,30 @@
-=meta: 0.0.1
+=meta: 0.0.2
 
 name: Tiny-YAML
-version: 0.0.12
+version: 0.0.13
 abstract: YAML::Tiny Done Right
 homepage: http://yaml.org
-
+language: perl
 license: perl
-copyright: 2014. Ingy döt Net.
+copyright: 2014
+
 author:
   name: Ingy döt Net
   email: ingy@cpan.org
+  homepage: http://ingy.net
   github: ingydotnet
   twitter: ingydotnet
   freenode: ingy
-  homepage: http://ingy.net
-
-requires:
-  perl: 5.8.1
 
 devel:
   git: https://github.com/ingydotnet/tiny-yaml-pm
   bug: https://github.com/ingydotnet/tiny-yaml-pm/issues
   irc: irc.perl.org#yaml
 
+requires:
+  perl: 5.8.1
+
 =travis:
-  type: perl
-  irc: irc.perl.org#yaml
   requires:
     Pegex: 0
     YAML::Pegex: 0
